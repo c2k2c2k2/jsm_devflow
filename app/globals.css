@@ -1,6 +1,92 @@
+/* Import Tailwind and plugins */
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@plugin "tailwindcss-animate";
+
+/* Configure dark mode */
+/* @tailwind dark-mode {
+  strategy: "class";
+  selector: .dark;
+} */
+
+/* Theme configuration */
+@theme {
+  /* Color Palette */
+  --color-primary-100: #fff1e6;
+  --color-primary-500: #ff7000;
+  --color-dark-100: #000000;
+  --color-dark-200: #0f1117;
+  --color-dark-300: #151821;
+  --color-dark-400: #212734;
+  --color-dark-500: #101012;
+  --color-light-400: #858ead;
+  --color-light-500: #7b8ec8;
+  --color-light-700: #dce3f1;
+  --color-light-800: #f4f6f8;
+  --color-light-850: #fdfdfd;
+  --color-light-900: #ffffff;
+
+  /* Border Radius */
+  --radius-2: 8px;
+  --radius-1-5: 6px;
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  /* Box Shadows */
+  --shadow-light-100:
+    0px 12px 20px 0px rgba(184, 184, 184, 0.03),
+    0px 6px 12px 0px rgba(184, 184, 184, 0.02),
+    0px 2px 4px 0px rgba(184, 184, 184, 0.03);
+  --shadow-light-200: 10px 10px 20px 0px rgba(218, 213, 213, 0.1);
+  --shadow-light-300: -10px 10px 20px 0px rgba(218, 213, 213, 0.1);
+  --shadow-dark-100: 0px 2px 10px 0px rgba(46, 52, 56, 0.1);
+  --shadow-dark-200: 2px 0px 20px 0px rgba(39, 36, 36, 0.04);
+
+  /* Background Images */
+  --bg-auth-dark: url("/images/auth-dark.png");
+  --bg-auth-light: url("/images/auth-light.png");
+
+  /* Screens */
+  --screen-xs: 420px;
+
+  /* Fonts */
+  --font-inter: var(--font-inter);
+  --font-space-grotesk: var(--font-space-grotesk);
+}
+
+/* Define gradients as components */
+@layer components {
+  .primary-gradient {
+    background: linear-gradient(129deg, #ff7000 0%, #e2995f 100%);
+  }
+
+  .dark-gradient {
+    background: linear-gradient(
+      232deg,
+      rgba(23, 28, 35, 0.41) 0%,
+      rgba(19, 22, 28, 0.7) 100%
+    );
+  }
+
+  .light-gradient {
+    background: linear-gradient(
+      132deg,
+      rgba(247, 249, 255, 0.5) 0%,
+      rgba(229, 237, 255, 0.25) 100%
+    );
+  }
+
+  .primary-text-gradient {
+    background: linear-gradient(129deg, #ff7000 0%, #e2995f 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
 
 @layer utilities {
+  /* Background utilities */
   .background-light850_dark100 {
     @apply bg-light-850 dark:bg-dark-100;
   }
@@ -13,12 +99,13 @@
     @apply bg-light-900 dark:bg-dark-300;
   }
 
+  /* Replace the problematic background-light800_darkgradient */
   .background-light800_darkgradient {
-    @apply bg-light-800 dark:dark-gradient;
+    @apply bg-light-800;
   }
 
   .background-light800_dark400 {
-    @apply bg-light-800 dark:bg-dark-400 !important;
+    @apply bg-light-800 dark:bg-dark-400;
   }
 
   .background-light700_dark400 {
@@ -29,12 +116,8 @@
     @apply bg-light-700 dark:bg-dark-300;
   }
 
-  .background-light800_dark400 {
-    @apply bg-light-800 dark:bg-dark-400;
-  }
-
   .background-light800_dark300 {
-    @apply bg-light-800 dark:bg-dark-300 !important;
+    @apply bg-light-800 dark:bg-dark-300;
   }
 
   .background-light800_dark200 {
@@ -42,11 +125,12 @@
   }
 
   .background-dark400_light900 {
-    @apply dark:bg-dark-400 bg-light-900 !important;
+    @apply bg-dark-400 dark:bg-light-900;
   }
 
+  /* Text utilities */
   .text-dark100_light900 {
-    @apply text-dark-100 dark:text-light-900 !important;
+    @apply text-dark-100 dark:text-light-900;
   }
 
   .text-dark200_light900 {
@@ -54,7 +138,7 @@
   }
 
   .text-dark200_light800 {
-    @apply text-dark-200 dark:text-light-800 !important;
+    @apply text-dark-200 dark:text-light-800;
   }
 
   .text-dark300_light700 {
@@ -66,7 +150,7 @@
   }
 
   .text-dark500_light700 {
-    @apply text-dark-500 dark:text-light-700 !important;
+    @apply text-dark-500 dark:text-light-700;
   }
 
   .text-dark500_light500 {
@@ -78,7 +162,7 @@
   }
 
   .text-dark300_light900 {
-    @apply text-dark-300 dark:text-light-900 !important;
+    @apply text-dark-300 dark:text-light-900;
   }
 
   .text-dark400_light800 {
@@ -86,7 +170,7 @@
   }
 
   .text-light400_light500 {
-    @apply text-light-400 dark:text-light-500 !important;
+    @apply text-light-400 dark:text-light-500;
   }
 
   .text-dark400_light500 {
@@ -94,21 +178,19 @@
   }
 
   .text-dark400_light900 {
-    @apply text-dark-400 dark:text-light-900 !important;
+    @apply text-dark-400 dark:text-light-900;
   }
 
-  .text-light400_light500 {
-    @apply text-light-400 dark:text-light-500 !important;
-  }
-
+  /* Border utilities */
   .light-border {
     @apply border-light-800 dark:border-dark-300;
   }
 
   .light-border-2 {
-    @apply border-light-700 dark:border-dark-400 !important;
+    @apply border-light-700 dark:border-dark-400;
   }
 
+  /* Typography utilities */
   .h1-bold {
     @apply text-[30px] leading-[42px] font-bold tracking-tighter;
   }
@@ -182,13 +264,14 @@
   }
 
   .subtle-medium {
-    @apply text-[10px] leading-[13px] font-medium !important;
+    @apply text-[10px] leading-[13px] font-medium;
   }
 
   .subtle-regular {
     @apply text-[10px] leading-[13px] font-normal;
   }
 
+  /* Other utilities */
   .placeholder {
     @apply placeholder:text-light-400 dark:placeholder:text-light-500;
   }
@@ -205,33 +288,6 @@
     @apply shadow-light-100 dark:shadow-none;
   }
 
-  .primary-gradient {
-    background: linear-gradient(129deg, #ff7000 0%, #e2995f 100%);
-  }
-
-  .dark-gradient {
-    background: linear-gradient(
-      232deg,
-      rgba(23, 28, 35, 0.41) 0%,
-      rgba(19, 22, 28, 0.7) 100%
-    );
-  }
-
-  .light-gradient {
-    background: linear-gradient(
-      132deg,
-      rgba(247, 249, 255, 0.5) 0%,
-      rgba(229, 237, 255, 0.25) 100%
-    );
-  }
-
-  .primary-text-gradient {
-    background: linear-gradient(129deg, #ff7000 0%, #e2995f 100%);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
   .flex-center {
     @apply flex items-center justify-center;
   }
@@ -245,23 +301,23 @@
   }
 
   .card-wrapper {
-    @apply bg-light-900 dark:dark-gradient shadow-light-100 dark:shadow-dark-100;
+    @apply bg-light-900 dark:bg-dark-300 shadow-light-100 dark:shadow-dark-100;
   }
 
   .btn {
-    @apply bg-light-800 dark:bg-dark-300 !important;
+    @apply bg-light-800 dark:bg-dark-300;
   }
 
   .btn-secondary {
-    @apply bg-light-800 dark:bg-dark-400 !important;
+    @apply bg-light-800 dark:bg-dark-400;
   }
 
   .btn-tertiary {
-    @apply bg-light-700 dark:bg-dark-300 !important;
+    @apply bg-light-700 dark:bg-dark-300;
   }
 
   .no-focus {
-    @apply focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0 !important;
+    @apply focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0;
   }
 
   .markdown {
@@ -273,14 +329,96 @@
   }
 
   .tab {
-    @apply dark:bg-dark-400 bg-light-800 text-light-500 dark:data-[state=active]:bg-dark-300 data-[state=active]:bg-primary-100 data-[state=active]:text-primary-500 min-h-full !important;
+    @apply dark:bg-dark-400 bg-light-800 text-light-500 dark:data-[state=active]:bg-dark-300 data-[state=active]:bg-primary-100 data-[state=active]:text-primary-500 min-h-full;
+  }
+}
+
+/* Add important styles separately using the new tailwind v4 syntax */
+@layer defaults {
+  .text-dark100_light900-important {
+    color: var(--color-dark-100) !important;
   }
 
-  .dark-gradient {
-    background: linear-gradient(
-      232deg,
-      rgba(23, 28, 35, 0.41) 0%,
-      rgba(19, 22, 28, 0.7) 100%
-    );
+  .dark .text-dark100_light900-important {
+    color: var(--color-light-900) !important;
+  }
+
+  .background-light800_dark400-important {
+    background-color: var(--color-light-800) !important;
+  }
+
+  .dark .background-light800_dark400-important {
+    background-color: var(--color-dark-400) !important;
+  }
+
+  .background-dark400_light900-important {
+    background-color: var(--color-dark-400) !important;
+  }
+
+  .dark .background-dark400_light900-important {
+    background-color: var(--color-light-900) !important;
+  }
+
+  .text-dark500_light700-important {
+    color: var(--color-dark-500) !important;
+  }
+
+  .dark .text-dark500_light700-important {
+    color: var(--color-light-700) !important;
+  }
+
+  .text-dark200_light800-important {
+    color: var(--color-dark-200) !important;
+  }
+
+  .dark .text-dark200_light800-important {
+    color: var(--color-light-800) !important;
+  }
+
+  .light-border-2-important {
+    border-color: var(--color-light-700) !important;
+  }
+
+  .dark .light-border-2-important {
+    border-color: var(--color-dark-400) !important;
+  }
+
+  .text-dark300_light900-important {
+    color: var(--color-dark-300) !important;
+  }
+
+  .dark .text-dark300_light900-important {
+    color: var(--color-light-900) !important;
+  }
+
+  .background-light800_dark300-important {
+    background-color: var(--color-light-800) !important;
+  }
+
+  .dark .background-light800_dark300-important {
+    background-color: var(--color-dark-300) !important;
+  }
+
+  .text-light400_light500-important {
+    color: var(--color-light-400) !important;
+  }
+
+  .dark .text-light400_light500-important {
+    color: var(--color-light-500) !important;
+  }
+
+  .no-focus-important {
+    outline: none !important;
+    box-shadow: none !important;
+  }
+
+  .tab-important {
+    min-height: 100% !important;
+  }
+
+  .subtle-medium-important {
+    font-size: 10px !important;
+    line-height: 13px !important;
+    font-weight: 500 !important;
   }
 }
