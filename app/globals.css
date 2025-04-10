@@ -46,8 +46,8 @@
   --shadow-dark-200: 2px 0px 20px 0px rgba(39, 36, 36, 0.04);
 
   /* Background Images */
-  --bg-auth-dark: url("/images/auth-dark.png");
-  --bg-auth-light: url("/images/auth-light.png");
+  --background-image-auth-dark: url("/images/auth-dark.png");
+  --background-image-auth-light: url("/images/auth-light.png");
 
   /* Screens */
   --screen-xs: 420px;
@@ -127,7 +127,7 @@
   }
 
   .background-dark400_light900 {
-    @apply bg-dark-400 dark:bg-light-900;
+    @apply dark:bg-dark-400 bg-light-900;
   }
 
   /* Text utilities */
