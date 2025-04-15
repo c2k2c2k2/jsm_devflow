@@ -1,0 +1,113 @@
+import ROUTES from "@/constants/route";
+import Image from "next/image";
+import Link from "next/link";
+import { title } from "process";
+import React from "react";
+import TagCard from "../cards/TagCard";
+
+const hotQuestions = [
+  {
+    _id: "1",
+    title: "How do I use express as a custom server in NextJS?",
+  },
+  {
+    _id: "2",
+    title: "How do I use express as a custom server in NextJS?",
+  },
+  {
+    _id: "3",
+    title: "How do I use express as a custom server in NextJS?",
+  },
+  {
+    _id: "4",
+    title: "How do I use express as a custom server in NextJS?",
+  },
+  {
+    _id: "5",
+    title: "How do I use express as a custom server in NextJS?",
+  },
+];
+
+const popularTags = [
+  {
+    _id: "1",
+    name: "javaScript",
+    questions: 100,
+    showCount: true,
+    compact: false,
+  },
+  {
+    _id: "2",
+    name: "react",
+    questions: 100,
+    showCount: true,
+    compact: false,
+  },
+  {
+    _id: "3",
+    name: "typescript",
+    questions: 100,
+    showCount: true,
+    compact: false,
+  },
+  {
+    _id: "4",
+    name: "nextjs",
+    questions: 100,
+    showCount: true,
+    compact: false,
+  },
+  {
+    _id: "5",
+    name: "tailwindcss",
+    questions: 100,
+    showCount: true,
+    compact: false,
+  },
+];
+const RightSidebar = () => {
+  return (
+    <section className="custom-scrollbar background-light900_dark200 light-border shadow-light-300 sticky top-0 right-0 flex h-screen w-[350px] flex-col gap-6 overflow-y-auto border-l p-6 pt-36 max-xl:hidden dark:shadow-none">
+      <div>
+        <h3 className="h3-bold text-dark200_light900">Top Questions</h3>
+
+        <div className="mt-7 flex w-full flex-col gap-[30px]">
+          {hotQuestions.map(({ _id, title }) => (
+            <Link
+              key={_id}
+              href={ROUTES.PROFILE(_id)}
+              className="flex cursor-pointer items-center justify-between gap-7"
+            >
+              <p className="body-medium text-dark500_light700">{title}</p>
+              <Image
+                src="/icons/chevron-right.svg"
+                alt="chevron"
+                width={20}
+                height={20}
+                className="invert-colors"
+              />
+            </Link>
+          ))}
+        </div>
+      </div>
+
+      <div className="mt-16">
+        <h3 className="h3-bold text-dark200_light900">Popular Tags</h3>
+        <div className="mt-7 flex flex-col gap-4">
+          {popularTags.map(({ _id, name, questions }) => (
+            <TagCard
+              key={_id}
+              _id={_id}
+              name={name}
+              questions={questions}
+              showCount
+              compact
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default RightSidebar;
