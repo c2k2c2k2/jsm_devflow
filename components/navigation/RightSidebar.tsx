@@ -52,14 +52,14 @@ const popularTags = [
   },
   {
     _id: "4",
-    name: "nextjs",
+    name: "php",
     questions: 100,
     showCount: true,
     compact: false,
   },
   {
     _id: "5",
-    name: "tailwindcss",
+    name: "jira",
     questions: 100,
     showCount: true,
     compact: false,
