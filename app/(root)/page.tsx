@@ -1,3 +1,4 @@
+import QuestionCard from "@/components/cards/QuestionCard";
 import HomeFilter from "@/components/filters/HomeFilter";
 import LocalSearch from "@/components/search/LocalSearch";
 import { Button } from "@/components/ui/button";
@@ -5,23 +6,24 @@ import ROUTES from "@/constants/route";
 import Link from "next/link";
 const questions = [
   {
-    _id: 1,
+    _id: "1",
     title: "How to use Next.js?",
     description: "I am new to Next.js and I want to know how to get started.",
     tags: [
       {
-        _id: 1,
+        _id: "1",
         name: "nextjs",
       },
       {
-        _id: 2,
+        _id: "2",
         name: "react",
       },
     ],
     author: {
-      _id: 1,
+      _id: "1",
       name: "John Doe",
-      picture: "https://example.com/john-doe.jpg",
+      image:
+        "https://png.pngtree.com/element_our/png/20181206/users-vector-icon-png_260862.jpg",
     },
     upvotes: 10,
     answers: 5,
@@ -29,23 +31,24 @@ const questions = [
     createdAt: new Date(),
   },
   {
-    _id: 2,
+    _id: "2",
     title: "How to use js?",
     description: "I am new to Next.js and I want to know how to get started.",
     tags: [
       {
-        _id: 1,
+        _id: "1",
         name: "javascript",
       },
       {
-        _id: 2,
+        _id: "2",
         name: "react",
       },
     ],
     author: {
-      _id: 1,
+      _id: "1",
       name: "John Doe",
-      picture: "https://example.com/john-doe.jpg",
+      image:
+        "https://png.pngtree.com/element_our/png/20181206/users-vector-icon-png_260862.jpg",
     },
     upvotes: 10,
     answers: 5,
@@ -91,7 +94,7 @@ const Home = async ({ searchParams }: SearchParams) => {
       <HomeFilter />
       <div className="mt-10 flex w-full flex-col gap-6">
         {filteredQuestions.map((question) => (
-          <h1 key={question._id}>{question.title}</h1>
+          <QuestionCard key={question._id} question={question} />
         ))}
       </div>
     </>
